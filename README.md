@@ -7,6 +7,7 @@ Task 1 build binary tree
    5  14
   /   / \
  1   11 20
+ 
 Task 2 breath first search
 output: [10, 5, 14, 1, 11, 20]
 Task 3 reverse breath first search
