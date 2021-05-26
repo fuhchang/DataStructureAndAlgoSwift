@@ -1,10 +1,7 @@
 # swift_binarytree_pract
 pract for dfs and bfs for binary tree
-
-
-
-    10 <br />
-    / \ <br />
+    10  <br />
+    / \  <br />
    5  14 <br />
   /   / \ <br />
  1   11 20 <br />
