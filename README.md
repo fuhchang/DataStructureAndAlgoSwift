@@ -2,6 +2,7 @@
 pract for dfs and bfs for binary tree
 
 
+
     10
     / \
    5  14
