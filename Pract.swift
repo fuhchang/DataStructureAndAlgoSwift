@@ -8,7 +8,7 @@ import Glibc
   /   / \
  1   11 20
 */
-
+//recursion dont work on unless it using class
 class Node {
     let value: Int
     var leftChild: Node?
