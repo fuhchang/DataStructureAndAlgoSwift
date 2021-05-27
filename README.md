@@ -1,4 +1,4 @@
-pract for dfs and bfs for binary tree </br>
+1. pract for dfs and bfs for binary tree </br>
 10 </br>
 / \  </br>
 5 14  </br>
