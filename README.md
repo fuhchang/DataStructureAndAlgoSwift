@@ -1,17 +1,13 @@
-# swift_binarytree_pract
 pract for dfs and bfs for binary tree
-
-
-
-    10 <br />
-    / \ <br />
-   5  14 <br />
-  /   / \ <br />
- 1   11 20 <br />
-Task 1 build binary tree <br />
-Task 2 breath first search<br />
-output: [10, 5, 14, 1, 11, 20]<br />
-Task 3 reverse breath first search<br />
-output: [10, 14, 5, 20, 11, 1]<br />
-Task 4 depth first search<br />
-output: [10, 5, 1, 14, 11, 20]<br />
+10
+/ \
+5 14
+/ / \
+1 11 20
+Task 1 build binary tree
+Task 2 breath first search
+output: [10, 5, 14, 1, 11, 20]
+Task 3 reverse breath first search
+output: [10, 14, 5, 20, 11, 1]
+Task 4 depth first search
+output: [10, 5, 1, 14, 11, 20]
