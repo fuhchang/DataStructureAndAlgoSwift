@@ -3,11 +3,11 @@ pract for dfs and bfs for binary tree
 
 
 
-    10<br />
-    / \<br />
-   5  14<br />
-  /   / \<br />
- 1   11 20<br />
+    10 <br />
+    / \ <br />
+   5  14 <br />
+  /   / \ <br />
+ 1   11 20 <br />
 Task 1 build binary tree <br />
 Task 2 breath first search<br />
 output: [10, 5, 14, 1, 11, 20]<br />
