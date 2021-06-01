@@ -24,7 +24,6 @@ func quicksort(low: Int, high: Int)
     var j = high
 
     let piv = (low + (high - low) / 2)
-    print(arr[piv] )
     let pivot_location = arr[piv]
 
     print("----")
