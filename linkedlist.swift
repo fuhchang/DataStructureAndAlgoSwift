@@ -1,6 +1,7 @@
 import Foundation
 import Glibc
 
+// mutliple linked list node
 class Node {
     let value: Int
     var linkedNode: [Node]?
@@ -64,3 +65,53 @@ bfsPrint(node: root)
 
 dfsPrint(node: root)
 print("depth first search \(nodeDFSStack)")
+
+
+//single linked list node
+import Foundation
+import Glibc
+
+class linkedListNode {
+     var value: Int
+     var next: linkedListNode?
+     init(value: Int) {
+        self.value = value
+     }
+ }
+
+ func reverseLinkedList(root: linkedListNode?) -> linkedListNode?  {
+   if let head = root {
+       if head.next == nil {
+           return head
+       }
+       let reverseNode = reverseLinkedList(root: head.next)
+       head.next?.next = head
+       head.next = nil
+       return reverseNode
+   } else {
+       return nil
+   }
+ }
+
+func printLinkedList(root: linkedListNode?) {
+    var curr = root
+    while curr != nil {
+        print(curr?.value ?? 0)
+        if let next = curr?.next {
+            curr = next
+        } else {
+            curr = nil
+        }
+    }
+}
+ let node1 = linkedListNode(value: 1)
+ let node2 = linkedListNode(value: 2)
+ let node3 = linkedListNode(value: 3)
+ let node4 = linkedListNode(value: 4)
+ node1.next = node2
+ node2.next = node3
+ node3.next = node4
+let linkedList = reverseLinkedList(root: node1)
+if let linkedNode = linkedList {
+    printLinkedList(root: linkedNode)
+}
