@@ -79,20 +79,20 @@ class linkedListNode {
      }
  }
 
- func reverseLinkedList(root: linkedListNode?) -> linkedListNode?  {
-   if let head = root {
-       if head.next == nil {
-           return head
-       }
-       let reverseNode = reverseLinkedList(root: head.next)
-       head.next?.next = head
-       head.next = nil
-       return reverseNode
-   } else {
-       return nil
-   }
- }
 
+func reverse(root: linkedListNode?) -> linkedListNode?  {
+    var prev: linkedListNode? = nil
+    var curr: linkedListNode? = root
+    var next: linkedListNode? = nil
+
+    while curr != nil {
+        next = curr?.next
+        curr?.next = prev
+        prev = curr
+        curr = next
+    }
+    return prev
+}
 func printLinkedList(root: linkedListNode?) {
     var curr = root
     while curr != nil {
@@ -111,7 +111,5 @@ func printLinkedList(root: linkedListNode?) {
  node1.next = node2
  node2.next = node3
  node3.next = node4
-let linkedList = reverseLinkedList(root: node1)
-if let linkedNode = linkedList {
-    printLinkedList(root: linkedNode)
-}
+ let node = reverse(root: node1)
+ printLinkedList(root: node)
