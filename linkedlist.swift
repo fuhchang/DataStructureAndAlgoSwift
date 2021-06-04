@@ -93,6 +93,23 @@ func reverse(root: linkedListNode?) -> linkedListNode?  {
     }
     return prev
 }
+
+func reverseRecursion(root: linkedListNode?) -> linkedListNode? {
+    guard let head = root else {
+        return root
+    }
+    if head.next == nil {
+        return head
+    }
+    let reversehead = reverseRecursion(root: head.next)
+    head.next?.next = head
+    head.next = nil
+
+    return reversehead
+}
+
+
+
 func printLinkedList(root: linkedListNode?) {
     var curr = root
     while curr != nil {
@@ -111,5 +128,7 @@ func printLinkedList(root: linkedListNode?) {
  node1.next = node2
  node2.next = node3
  node3.next = node4
- let node = reverse(root: node1)
+let node = reverseRecursion(root: node1)
+
+//  let node = reverse(root: node1)
  printLinkedList(root: node)
