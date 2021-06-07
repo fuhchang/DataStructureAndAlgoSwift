@@ -65,7 +65,7 @@ var numbers = [12, 0, 3, 9, 2, 18, 8, 27, 5, 1, 21]
  }
  var numbers2 = [1, 4, 6, 7, 10, 12, 18, 19, 23, 24, 44, 58, 65]
 //  binarySearchTwoSum(arr: numbers2, sum: 47)
- 
+
 
  //3 move pointer
 
