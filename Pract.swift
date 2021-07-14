@@ -1,6 +1,6 @@
 import Foundation
 import Glibc
- 
+
 /*
      10
     / \
@@ -13,7 +13,7 @@ class Node {
     let value: Int
     var leftChild: Node?
     var rightChild: Node?
-    
+
     init(value: Int?) {
         self.value = value ?? 0
     }
@@ -91,7 +91,7 @@ func reverseBfsPrint(node: Node?) {
 var nodeDFSList = [Int]()
 func dfsPrint(node: Node?) {
     if node == nil {
-        return 
+        return
     } else {
         nodeDFSList.append(node?.value ?? 0)
         dfsPrint(node: node?.leftChild)
