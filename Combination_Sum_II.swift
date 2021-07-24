@@ -33,54 +33,80 @@ Constraints:
 1 <= candidates[i] <= 50
 1 <= target <= 30
 */
+// slower solution
+// class Solution {
+//     func combinationSum2(_ candidates: [Int], _ target: Int) -> [[Int]] {
+//         var result = [[Int]]()
+//         guard candidates.count > 0 else { return result }
+//         let total = candidates.reduce(0, +)
+//         if total < target {
+//             return result
+//         } else if total == target {
+//             result.append(candidates)
+//             return result
+//         } else {
+//             let uniqueElements = Set(candidates)
+//             if uniqueElements.count == 1 {
+//                 if total > target {
+//                     var temp = [Int]()
+//                     var remain = target
+//                     for item in candidates {
+//                         remain = remain - item
+//                         temp.append(item)
+//                         if remain == 0 {
+//                             result.append(temp)
+//                             break
+//                         }
+//                     }
+//                 }
+//             } else {
+//                 var arr = candidates.sorted()
+//                 trace(&result,[Int](),arr, target,0)
+//             }
+//         }
+//         return result
+//     }
+    
+//     func trace(_ result: inout [[Int]], _ list: [Int], _ candidates: [Int], _ remain: Int,_ start: Int) {
+//         var temp = list
+//         if remain < 0 {
+//             return
+//         } else if remain == 0 {
+//             if !result.contains(list) {
+//               result.append(list)   
+//             }
+//         } else {
+//             for i in start..<candidates.count {
+//                 temp.append(candidates[i])
+//                 trace(&result, temp, candidates, remain - candidates[i], i + 1)
+//                 temp.removeLast()
+//             }
+//         }
+//     }
+// }
 
+//faster solution
 class Solution {
     func combinationSum2(_ candidates: [Int], _ target: Int) -> [[Int]] {
         var result = [[Int]]()
         guard candidates.count > 0 else { return result }
-        let total = candidates.reduce(0, +)
-        if total < target {
-            return result
-        } else if total == target {
-            result.append(candidates)
-            return result
-        } else {
-            let uniqueElements = Set(candidates)
-            if uniqueElements.count == 1 {
-                if total > target {
-                    var temp = [Int]()
-                    var remain = target
-                    for item in candidates {
-                        remain = remain - item
-                        temp.append(item)
-                        if remain == 0 {
-                            result.append(temp)
-                            break
-                        }
-                    }
-                }
-            } else {
-                var arr = candidates.sorted()
-                trace(&result,[Int](),arr, target,0)
-            }
-        }
+        var arr = candidates.sorted()
+        trace(&result,[Int](),arr, target,0)
         return result
     }
     
     func trace(_ result: inout [[Int]], _ list: [Int], _ candidates: [Int], _ remain: Int,_ start: Int) {
         var temp = list
-        if remain < 0 {
+       if remain == 0 {
+           result.append(list) 
             return
-        } else if remain == 0 {
-            if !result.contains(list) {
-              result.append(list)   
-            }
-        } else {
-            for i in start..<candidates.count {
+        } 
+        if start >= candidates.count || candidates[start] > remain { return }
+        for i in start..<candidates.count {
+    if i != start && candidates[i]==candidates[i-1] { continue }
                 temp.append(candidates[i])
                 trace(&result, temp, candidates, remain - candidates[i], i + 1)
                 temp.removeLast()
             }
-        }
     }
 }
