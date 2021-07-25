@@ -21,6 +21,29 @@ Constraints:
 intervals[i].length == 2
 0 <= starti <= endi <= 104
 */
+//faster
+class Solution {
+     func merge(_ intervals: [[Int]]) -> [[Int]] {
+        var result = [[Int]]()
+        guard intervals.count > 1 else { return intervals}
+        let sorted = intervals.sorted(by: {$0[0] < $1[0]})
+        result.append(sorted.first!)
+        for i in 1..<sorted.count {
+            let prevStart = result.last![0]
+            let prevEnd = result.last![1]
+            let currStart = sorted[i][0]
+            let currEnd = sorted[i][1]
+            if prevEnd >= currStart && prevEnd <= currEnd {
+                    result.removeLast()
+                    result.append([prevStart,currEnd])
+                } else if prevEnd < currEnd {
+                    result.append([currStart,currEnd])
+                } 
+        }
+        return result
+    }
+}
+// slower solution
 class Solution {
     func merge(_ intervals: [[Int]]) -> [[Int]] {
         var result = [[Int]]()
