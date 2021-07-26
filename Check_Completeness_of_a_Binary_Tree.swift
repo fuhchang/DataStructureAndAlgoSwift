@@ -42,23 +42,24 @@ The number of nodes in the tree is in the range [1, 100].
  */
 class Solution {
     func isCompleteTree(_ root: TreeNode?) -> Bool {
-        var queue = [root]
-        while !queue.isEmpty {
-            let size = queue.count
-            for i in 0..<size {
-                guard let node = queue.removeFirst() else {
+        var qs = [root]
+        while !qs.isEmpty {
+            let v = qs.count
+            for i in 0 ..< v {
+                guard let u = qs.remove(at: 0) else {
                     continue
                 }
-                var child = [node.left, node.right]
-                for item in child {
-                        queue.append(item)
+                var child = [u.left, u.right]
+                for c in child {
+                    guard let t = c else {
+                        qs.append(c)
                         continue
-                    }
-                    if queue.count >= 0, let t = queue.last, t == nil {
+                    } 
+                    if qs.count > 0, let t = qs.last, t == nil {
                         return false
                     }
-                    queue.append(item)
-                }
+                    qs.append(c)
+                }  
             }
         }
         return true
