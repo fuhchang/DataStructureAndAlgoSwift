@@ -44,9 +44,7 @@ class Solution {
     func isCompleteTree(_ root: TreeNode?) -> Bool {
         var qs = [root]
         while !qs.isEmpty {
-            let v = qs.count
-            for i in 0 ..< v {
-                guard let u = qs.remove(at: 0) else {
+           guard let u = qs.remove(at: 0) else {
                     continue
                 }
                 var child = [u.left, u.right]
@@ -59,8 +57,7 @@ class Solution {
                         return false
                     }
                     qs.append(c)
-                }  
-            }
+                }
         }
         return true
     }
