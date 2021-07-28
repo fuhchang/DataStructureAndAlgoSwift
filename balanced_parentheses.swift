@@ -1,31 +1,65 @@
-import Foundation
-import Glibc
- 
-var strValue: String = "[({})]"
-var strValue2: String = ")[({}]"
-let openingSymbolList = ["[", "{", "("]
-let closingSymbolList = ["]", "}", ")"]
-func BalancedParenthesesChecker(s: String) -> Bool {
-    var charStackList = [String]()
-    for char in s {
-        let strChar = "\(char)"
-        if openingSymbolList.contains(strChar) {
-            charStackList.append(strChar)
-        } else {
-            if charStackList.isEmpty {
-                return false
-            } else {
-               if let index = closingSymbolList.index(of: strChar) {
-               let openSymbol =  openingSymbolList[index]
-                if strChar == closingSymbolList[index] && openSymbol == charStackList.last {
-                    _ = charStackList.popLast()
-                }
-               }  
-            } 
-        }
-    }
-    return charStackList.count == 0 ? true : false
-}
+/*
+20. Valid Parentheses
+Easy
 
-print(BalancedParenthesesChecker(s: strValue))
-print(BalancedParenthesesChecker(s: strValue2))
+8347
+
+340
+
+Add to List
+
+Share
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+ 
+
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+Example 4:
+
+Input: s = "([)]"
+Output: false
+Example 5:
+
+Input: s = "{[]}"
+Output: true
+ 
+
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+*/
+class Solution {
+    func isValid(_ s: String) -> Bool {
+        var arr = [Character]()
+        for c in s {
+            if c == "(" || c == "{" || c ==  "[" {
+                arr.insert(c, at: 0)
+            } else {
+                if arr.isEmpty {
+                    return false
+                }
+                if c == ")" && arr.first != "(" || c == "}" && arr.first != "{" || c == "]" && arr.first != "[" {
+                    return false
+                }
+                arr.removeFirst()
+            }
+        }
+        return arr.isEmpty
+    }
+}
