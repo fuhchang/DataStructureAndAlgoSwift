@@ -24,3 +24,19 @@ n == grid[i].length
 1 <= m, n <= 200
 0 <= grid[i][j] <= 100
 */
+class Solution {
+    func minPathSum(_ grid: [[Int]]) -> Int {
+        var board = Array(repeating: Int.max, count: grid.first?.count ?? 0)
+        board[0] = 0
+        for row in grid {
+            for j in 0..<row.count {
+                if j == 0 {
+                 board[j] += row[j]   
+                } else {
+                    board[j] = min(board[j], board[j-1]) + row[j]
+                }
+            }
+        }
+        return board.last ?? 0
+    }
+}
