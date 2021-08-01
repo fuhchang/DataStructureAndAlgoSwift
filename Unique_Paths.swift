@@ -38,28 +38,18 @@ It's guaranteed that the answer will be less than or equal to 2 * 109.
 */
 class Solution {
     func uniquePaths(_ m: Int, _ n: Int) -> Int {
-        if m == 0 || n == 0  { return 0 }
-        var board = Array(repeating: Array(repeating:0, count: n+1) , count: m+1)
-        var i = 1, j = 1
-        while i <= n {
-            board[1][i] = 1
-            i += 1
+        guard m >= 1 && n >= 1 else { return 0 }
+
+        if m == 1 || n == 1 {
+            return 1
         }
         
-        while j <= m {
-            board[j][1] = 1
-            j += 1
-        }
-        var row = 2
-        while row <= m {
-            var col = 2
-            while col <= n {
-                board[row][col] += board[row-1][col] + board[row][col-1]
-                col += 1
+        var board = Array(repeating: Array(repeating: 1, count: m), count: n)
+        for row in 1..<n{
+            for col in 1..<m {
+                board[row][col] = board[row-1][col] + board[row][col-1]
             }
-            row += 1
         }
-        print(board)
-        return board[m][n]
+        return board[n-1][m-1]
     }
 }
